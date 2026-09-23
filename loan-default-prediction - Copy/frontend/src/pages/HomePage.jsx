@@ -35,7 +35,7 @@ function HomePage() {
             <span>🚀 Launch Prediction Tool</span>
           </Link>
           <a
-            href="http://localhost:8000/docs"
+            href={import.meta.env.DEV ? "http://localhost:8000/docs" : "/docs"}
             target="_blank"
             rel="noreferrer"
             className="btn btn-outline-secondary d-inline-flex align-items-center gap-2 px-4 py-2"

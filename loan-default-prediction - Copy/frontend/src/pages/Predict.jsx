@@ -14,7 +14,7 @@
 import React, { useState, useEffect } from "react";
 
 // The FastAPI backend base URL
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = import.meta.env.DEV ? "http://localhost:8000" : "";
 
 // Initial default state for all 16 loan application fields
 const INITIAL_FORM_DATA = {
@@ -233,7 +233,7 @@ function PredictPage() {
       console.error("Prediction request failed:", err);
       setError(
         err.message ||
-          "Failed to connect to the prediction backend. Please verify FastAPI is running on http://localhost:8000."
+          `Failed to connect to the prediction backend. Please verify FastAPI is running (locally on http://localhost:8000 or correctly deployed).`
       );
     } finally {
       setLoading(false);
