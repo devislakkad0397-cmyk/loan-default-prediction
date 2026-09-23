@@ -143,10 +143,14 @@ def predict_loan_default(input_data: LoanPredictionInput) -> PredictionResponse:
 
 # Root route for quick verification in browser
 @app.get("/", tags=["System"])
+@app.get("/api", tags=["System"])
+@app.get("/api/", tags=["System"])
 def root():
     return {
         "message": "Welcome to the Loan Default Prediction API",
+        "status": "online",
         "docs": "/docs",
+        "health_endpoint": "/api/health",
         "models_endpoint": "/api/models",
         "predict_endpoint": "/api/predict"
     }
