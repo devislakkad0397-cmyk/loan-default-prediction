@@ -16,7 +16,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Any, List
 import joblib
-import pandas as pd
 import numpy as np
 
 from backend.models.base import BaseModelPredictor
@@ -148,9 +147,9 @@ class DecisionTreePredictor(BaseModelPredictor):
             "LoanPurpose_Other": 1.0 if data.LoanPurpose == "Other" else 0.0,
         }
 
-        # Convert dictionary to DataFrame and ensure columns match EXPECTED_FEATURES in order
-        df_input = pd.DataFrame([features])[self.EXPECTED_FEATURES]
-        return df_input
+        # Convert dictionary to a 2D list and ensure columns match EXPECTED_FEATURES in order
+        feature_list = [features[feat] for feat in self.EXPECTED_FEATURES]
+        return [feature_list]
 
     def predict(self, data: LoanPredictionInput) -> PredictionResponse:
         """
