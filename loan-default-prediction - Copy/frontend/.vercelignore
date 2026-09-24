@@ -1,6 +1,5 @@
 data/
-notebooks-containing-models/*.ipynb
-frontend/node_modules/
-backend/venv/
+node_modules/
 .ipynb_checkpoints/
 anaconda_projects/
+*.ipynb
