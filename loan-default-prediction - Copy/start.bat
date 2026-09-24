@@ -1,6 +1,8 @@
 @echo off
 echo Starting Loan Default Prediction App...
 
+cd frontend
+
 echo Starting Backend Server on port 8000...
 start cmd /k "python -m uvicorn api.index:app --reload --port 8000"
 
