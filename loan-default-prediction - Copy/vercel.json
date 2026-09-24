@@ -10,36 +10,28 @@
     },
     {
       "src": "backend/main.py",
-      "use": "@vercel/python",
-      "config": {
-        "includeFiles": "notebooks-containing-models/*.pkl"
-      }
+      "use": "@vercel/python"
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "destination": "/backend/main.py"
+      "src": "/api/(.*)",
+      "dest": "/backend/main.py"
     },
     {
-      "source": "/docs",
-      "destination": "/backend/main.py"
+      "src": "/docs",
+      "dest": "/backend/main.py"
     },
     {
-      "source": "/redoc",
-      "destination": "/backend/main.py"
+      "src": "/openapi.json",
+      "dest": "/backend/main.py"
     },
     {
-      "source": "/openapi.json",
-      "destination": "/backend/main.py"
+      "handle": "filesystem"
     },
     {
-      "source": "/assets/(.*)",
-      "destination": "/frontend/assets/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/frontend/index.html"
+      "src": "/(.*)",
+      "dest": "/frontend/index.html"
     }
   ]
 }
