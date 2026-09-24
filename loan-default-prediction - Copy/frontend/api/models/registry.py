@@ -97,22 +97,10 @@ ADDITIONAL_MODELS = [
         "filename": "GaussianNBModel.pkl",
     },
     {
-        "model_id": "knn",
-        "name": "K-Nearest Neighbors",
-        "description": "K-Nearest Neighbors classifier trained on the loan-default dataset.",
-        "filename": "KNNModel.pkl",
-    },
-    {
         "model_id": "logistic_regression",
         "name": "Logistic Regression",
         "description": "Logistic Regression classifier trained on the loan-default dataset.",
         "filename": "LogisticRegressionModel.pkl",
-    },
-    {
-        "model_id": "svc",
-        "name": "Support Vector Classifier",
-        "description": "Support Vector Classifier trained on the loan-default dataset.",
-        "filename": "SVCModel.pkl",
     },
 ]
 
