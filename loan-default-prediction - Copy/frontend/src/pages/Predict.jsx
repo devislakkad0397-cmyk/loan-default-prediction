@@ -214,13 +214,39 @@ function PredictPage() {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || `Server returned error ${response.status}`);
-      }
+     if (!response.ok) {
+  const responseText = await response.text();
 
-      const predictionData = await response.json();
-      setResult(predictionData);
+  let errorMessage;
+
+  try {
+    const errorData = JSON.parse(responseText);
+    errorMessage =
+      errorData.detail ||
+      errorData.message ||
+      `Server returned error ${response.status}`;
+  } catch {
+    errorMessage =
+      responseText ||
+      `Server returned error ${response.status}`;
+  }
+
+  throw new Error(errorMessage);
+}
+
+const responseText = await response.text();
+
+let predictionData;
+
+try {
+  predictionData = JSON.parse(responseText);
+} catch {
+  throw new Error(
+    `Backend did not return valid JSON: ${responseText}`
+  );
+}
+
+setResult(predictionData);
 
       // Smoothly scroll down to results
       setTimeout(() => {
